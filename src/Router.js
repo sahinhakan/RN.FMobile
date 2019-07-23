@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import AuthLoading from './screens/AuthLoading';
 import Login from './screens/Login';
@@ -7,6 +8,7 @@ import Home from './screens/Home';
 import PlanCalendar from './screens/PlanCalendar';
 import Consultants from './screens/Consultants';
 
+import DrawerButton from './components/DrawerButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const AuthStack = createStackNavigator({
@@ -19,11 +21,16 @@ const AuthStack = createStackNavigator({
 });
 
 const AppStack = createStackNavigator({
-  Home: Home,
+  Home: {
+    screen: Home
+  },
   PlanCalendar,
   Consultants
 }, {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerLeft: <DrawerButton navigation={navigation} />
+    })
   });
 
 const PlanCalendarStack = createStackNavigator({
@@ -32,18 +39,17 @@ const PlanCalendarStack = createStackNavigator({
 
 const AppDrawerNavigator = createDrawerNavigator({
   Home: {
-    screen: Home,
-    navigationOptions: {
+    screen: AppStack,
+    navigationOptions: ({ navigation }) => ({
       drawerLabel: 'Ana Sayfa',
       drawerIcon: ({ tintColor }) => (
-        // içerde tintColor'ı atarsam yazı rengi ile aynı olur
         <Icon
           name="ios-home"
           size={22}
           color={tintColor}
         />
       )
-    }
+    })
   },
   PlanCalendar: {
     screen: PlanCalendar,
