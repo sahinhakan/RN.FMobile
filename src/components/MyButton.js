@@ -7,7 +7,9 @@ export default class MyButton extends React.Component {
     const { color, backgroundColor } = this.props;
 
     return (
-      <TouchableOpacity style={[styles.button, { backgroundColor }]}>
+      <TouchableOpacity
+        {...this.props}
+        style={[styles.button, { backgroundColor }]}>
         <Text style={[styles.text, { color }]}>{this.props.text}</Text>
       </TouchableOpacity>
     );
@@ -28,6 +30,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 14
+    fontSize: 18
   }
 });

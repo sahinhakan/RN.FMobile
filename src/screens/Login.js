@@ -18,7 +18,7 @@ export default class Login extends React.Component {
               source={require('../../assets/felece.png')} />
             <ScrollView>
               <View style={styles.loginArea}>
-                <LoginForm />
+                <LoginForm navigation={this.props.navigation} />
               </View>
             </ScrollView>
 
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     color: '#f2f2f2'
   },
   loginArea: {
-    marginHorizontal: 40,
-    marginVertical: 40,
+    marginHorizontal: 20,
+    marginVertical: 20,
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 10,
@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     height: 100,
-    width: '100%',
+    width: '100%'
   }
 });

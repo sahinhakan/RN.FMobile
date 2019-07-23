@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 
 export default class MyInput extends React.Component {
-    state = {
-        text: ''
-    }
+    // state = {
+    //     username: ''
+    // }
 
     render() {
         return (
@@ -13,25 +13,25 @@ export default class MyInput extends React.Component {
                 <TextInput {...this.props}
                     placeholderTextColor="#ddd"
                     style={styles.input}
-                    value={this.state.text}
                     ref={this.props.inputRef}
-                    onChangeText={text => this.setState({ text })}
                 />
             </View>
         );
+
+        // onChangeText={text => this.setState({ text })}
     }
 }
 
 const styles = StyleSheet.create({
     input: {
-        height: 40,
+        height: 50,
         paddingHorizontal: 5,
         borderWidth: 2,
         borderRadius: 4,
         borderColor: '#f1f1f1',
         color: '#999',
         marginBottom: 8,
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: '600'
     }
 });
